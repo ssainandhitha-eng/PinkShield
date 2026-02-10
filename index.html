@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pink Shield - AI-Powered Women's Safety Platform</title>
+    <meta name="description"
+        content="Pink Shield: Your personal safety companion with AI threat detection, live tracking, safe routes, and 24/7 emergency response. Safety. Community. Accessibility.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Emergency SOS Overlay (Always Accessible) -->
+    <div id="sos-overlay" class="sos-overlay">
+        <div class="sos-overlay-content">
+            <h2>🆘 EMERGENCY SOS ACTIVATED</h2>
+            <div class="sos-status">
+                <div class="status-item active">✓ Location shared with emergency contacts</div>
+                <div class="status-item active">✓ Police (100/112) alerted</div>
+                <div class="status-item active">✓ SMS sent to trusted network</div>
+                <div class="status-item active">✓ Audio/Video recording started</div>
+                <div class="status-item active">✓ Live tracking enabled</div>
+            </div>
+            <div class="sos-timer">Help arriving in: <span id="help-timer">3:00</span></div>
+            <button class="btn-cancel-sos" onclick="cancelSOS()">Cancel SOS</button>
+        </div>
+    </div>
+
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-content">
+            <div class="nav-logo">
+                <img src="logo.png" alt="Pink Shield Logo" class="nav-logo-img">
+                <span class="nav-brand">Pink Shield</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" onclick="showSection('home')" class="nav-link active">Home</a></li>
+                <li><a href="#features" onclick="showSection('features')" class="nav-link">Features</a></li>
+                <li><a href="#map" onclick="showSection('map')" class="nav-link">Safety Map</a></li>
+                <li><a href="#community" onclick="showSection('community')" class="nav-link">Community</a></li>
+                <li><a href="#accessibility" onclick="showSection('accessibility')" class="nav-link">Accessibility</a>
+                </li>
+                <li><a href="#contact" onclick="showSection('contact')" class="nav-link">Get Started</a></li>
+            </ul>
+            <div class="nav-actions">
+                <select id="language-selector" class="language-select">
+                    <option value="en">English</option>
+                    <option value="ta">தமிழ் (Tamil)</option>
+                    <option value="hi">हिंदी (Hindi)</option>
+                    <option value="ml">മലയാളം (Malayalam)</option>
+                    <option value="te">తెలుగు (Telugu)</option>
+                    <option value="kn">ಕನ್ನಡ (Kannada)</option>
+                </select>
+                <button class="btn-sos-nav" onclick="triggerEmergencySOS()">
+                    <span class="sos-icon">🆘</span> EMERGENCY SOS
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section active">
+        <div class="hero">
+            <div class="hero-content">
+                <img src="logo.png" alt="Pink Shield Logo" class="hero-logo">
+                <h1 class="hero-title">Pink Shield</h1>
+                <p class="hero-tagline">Safety. Community. Accessibility.</p>
+                <p class="hero-subtitle">AI-Powered Women's Safety Platform with Sub-100ms Emergency Response</p>
+
+                <!-- Main SOS Button -->
+                <div class="sos-container">
+                    <button class="btn-sos-hero" onclick="triggerEmergencySOS()"
+                        title="Press for emergency help (Ctrl+E)">
+                        <span class="sos-text">SOS</span>
+                        <span class="sos-subtext">Tap for Emergency</span>
+                        <span class="sos-hint">Ctrl+E or Shake Phone</span>
+                    </button>
+                    <div class="sos-triggers">
+                        <div class="trigger-item">📱 Shake 3x</div>
+                        <div class="trigger-item">🔘 Power Button 3x</div>
+                        <div class="trigger-item">🎤 Voice "Help Me"</div>
+                        <div class="trigger-item">📢 Scream Detection</div>
+                    </div>
+                </div>
+
+                <!-- Quick Emergency Actions -->
+                <div class="quick-emergency">
+                    <button class="emergency-action" onclick="quickCall('100')">
+                        <span class="action-icon">🚓</span>
+                        <span class="action-label">Police 100</span>
+                    </button>
+                    <button class="emergency-action" onclick="quickCall('108')">
+                        <span class="action-icon">🚑</span>
+                        <span class="action-label">Ambulance 108</span>
+                    </button>
+                    <button class="emergency-action" onclick="quickCall('1091')">
+                        <span class="action-icon">👩</span>
+                        <span class="action-label">Women Helpline</span>
+                    </button>
+                    <button class="emergency-action" onclick="shareLocation()">
+                        <span class="action-icon">📍</span>
+                        <span class="action-label">Share Location</span>
+                    </button>
+                </div>
+
+                <!-- Stats -->
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">&lt;100ms</div>
+                        <div class="stat-label">SOS Response</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100K+</div>
+                        <div class="stat-label">Protected Users</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99.99%</div>
+                        <div class="stat-label">Uptime</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">AI Monitoring</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <div class="section-content">
+            <h2 class="section-title">Comprehensive Safety Features</h2>
+            <p class="section-subtitle">Everything you need to stay safe, powered by AI and community</p>
+
+            <!-- Feature Categories -->
+            <div class="feature-categories">
+                <button class="category-btn active" onclick="filterFeatures('all')">All Features</button>
+                <button class="category-btn" onclick="filterFeatures('emergency')">🆘 Emergency</button>
+                <button class="category-btn" onclick="filterFeatures('ai')">🤖 AI-Powered</button>
+                <button class="category-btn" onclick="filterFeatures('location')">🗺️ Location</button>
+                <button class="category-btn" onclick="filterFeatures('security')">🔐 Security</button>
+                <button class="category-btn" onclick="filterFeatures('community')">👥 Community</button>
+            </div>
+
+            <div class="features-grid">
+                <!-- Emergency Features -->
+                <div class="feature-card" data-category="emergency">
+                    <div class="feature-icon">🆘</div>
+                    <h3>One-Tap SOS</h3>
+                    <p>Instant emergency alert to police and contacts with live location, battery %, and timestamp</p>
+                    <ul class="feature-list">
+                        <li>Sub-100ms response time</li>
+                        <li>Auto-dispatch to Police (100/112)</li>
+                        <li>SMS to 10 emergency contacts</li>
+                        <li>Live GPS tracking until help arrives</li>
+                    </ul>
+                    <button class="btn-feature" onclick="showFeatureDemo('sos')">Try Demo</button>
+                </div>
+
+                <div class="feature-card" data-category="emergency">
+                    <div class="feature-icon">📱</div>
+                    <h3>Auto-Trigger SOS</h3>
+                    <p>Multiple ways to activate emergency without touching the screen</p>
+                    <ul class="feature-list">
+                        <li>Shake phone 3-4 times</li>
+                        <li>Press power button 3 times</li>
+                        <li>Scream detection (AI)</li>
+                        <li>Tap pattern (silent mode)</li>
+                    </ul>
+                    <button class="btn-feature" onclick="showFeatureDemo('auto-trigger')">Learn More</button>
+                </div>
+
+                <div class="feature-card" data-category="emergency">
+                    <div class="feature-icon">📞</div>
+                    <h3>Emergency Calling</h3>
+                    <p>Quick dial to Police, Ambulance, Fire - works in low network</p>
+                    <ul class="feature-list">
+                        <li>Police: 100/112</li>
+                        <li>Ambulance: 108</li>
+                        <li>Women Helpline: 1091</li>
+                        <li>Domestic Abuse: 181</li>
+                    </ul>
+                    <button class="btn-feature" onclick="showFeatureDemo('calling')">View Numbers</button>
+                </div>
+
+                <!-- AI Features -->
+                <div class="feature-card" data-category="ai">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI Threat Detection</h3>
+                    <p>Machine learning detects unusual activity and triggers auto-SOS</p>
+                    <ul class="feature-list">
+                        <li>Rapid movement detection</li>
+                        <li>Phone fall detection</li>
+                        <li>Continuous loud noise analysis</li>
+                        <li>Multi-sensor fusion AI</li>
+                    </ul>
+                    <button class="btn-feature" onclick="showFeatureDemo('ai-threat')">See How It Works</button>
+                </div>
+
+                <div class="feature-card" data-category="ai">
+                    <div class="feature-icon">🎤</div>
+                    <h3>AI Voice Command</h3>
+                    <p>Hands-free emergency activation with voice commands</p>
+                    <ul class="feature-list">
+                        <li>"Help me" triggers SOS</li>
+                        <li>"SOS" activates emergency</li>
+                        <li>"Guide me home" for navigation</li>
+                        <li>Works offline with on-device AI</li>
+                    </ul>
+                    <button class="btn-feature" onclick="showFeatureDemo('voice')">Try Voice Commands</button>
+                </div>
+
+                <div class="feature-card" data-category="ai">
+                    <div class="feature-icon">🗺️</div>
+                    <h3>AI Harassment Zone Mapping</h3>
+                    <p>Police data + user reports create real-time danger zone maps</p>
+                    <ul class="feature-list">
+                        <li>Color-coded safety zones</li>
+                        <li>Time-based risk analysis</li>
+                        <li>Crowd-sourced incident reports</li>
+                        <li>Dynamic updates every 15 min</li>
+                    </ul>
+                    <button class="btn-feature" onclick="showSection('map')">View Map</button>
+                </div>
+
+                <div class="feature-card" data-category="ai">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>AI Companion Mode</h3>
+                    <p>Monitors your journey and detects route deviations</p>
+                    <ul class="feature-list">
+                        <li>Unexpected route change alerts</li>
+                        <li>Abrupt speed stop detection</li>
+                        <li>Unusual detour warnings</li>
+                        <li>Auto-SOS if off-route >5 min</li>
+                    </ul>
+                    <button class="btn-feature" onclick="showFeatureDemo('companion')">Start Journey</button>
+                </div>
+
+                <!-- Location Features -->
+                <div class="feature-card" data-category="location">
+                    <div class="feature-icon">📍</div>
+                    <h3>Live Location Tracking</h3>
+                    <p>Continuous GPS tracking shared with trusted contacts</p>
+                    <ul class="feature-list">
+                        <li>Real-time location updates</li>
+                        <li>Battery percentage monitoring</li>
+                        <li>Timestamp on every update</li>
+                        <li>Works until help arrives</li>
+                    </ul>
+                    <button class="btn-feature" onclick="showFeatureDemo('tracking')">Enable Tracking</button>
+                </div>
+
+                <div class="feature-card" data-category="location">
+                    <div class="feature-icon">🛣️</div>
+                    <h3>Safe Route Suggestion</h3>
+                    <p>AI suggests safest path based on lighting, crowds, and police presence</p>
+                    <ul class="feature-list">
+                        <li>Well-lit path preference</li>
+                        <li>Crowded route prioritization</li>
+                        <li>Police patrol hotspot routing</li>
+                        <li>Avoid red/orange danger zones</li>
+                    </ul>
+                    <button class="btn-feature" onclick="showSection('map')">Find Safe Route</button>
+                </div>
+
+                <div class="feature-card" data-category="location">
+                    <div class="feature-icon">🏥</div>
+                    <h3>Nearest Help Centers</h3>
+                    <p>Find police stations, hospitals, NGOs, and safe places nearby</p>
+                    <ul class="feature-list">
+                        <li>Police stations (24/7)</li>
+                        <li>Hospitals with emergency services</li>
+                        <li>Women's safety NGOs</li>
+                        <li>Verified safe public places</li>
+                    </ul>
+                    <button class="btn-feature" onclick="showSection('map')">View Nearby</button>
+                </div>
+
+                <!-- Security Features -->
+                <div class="feature-card" data-category="security">
+                    <div class="feature-icon">🎭</div>
+                    <h3>Fake Screen Mode</h3>
+                    <p>Disguise app as calculator/gallery while secretly tracking</p>
+                    <ul class="feature-list">
+                        <li>Calculator disguise</li>
+                        <li>Gallery app disguise</li>
+                        <li>Notes app disguise</li>
+                        <li>Background tracking continues</li>
+                    </ul>
+                    <button class="btn-feature" onclick="showFeatureDemo('fake-screen')">Activate</button>
+                </div>
+
+                <div class="feature-card" data-category="security">
+                    <div class="feature-icon">🎥</div>
+                    <h3>Hidden Recording</h3>
+                    <p>Auto audio/video recording during SOS, uploaded to cloud</p>
+                    <ul class="feature-list">
+                        <li>Silent recording activation</li>
+                        <li>Auto-upload to secure cloud</li>
+                        <li>End-to-end encryption</li>
+                        <li>Evidence preservation</li>
+                    </ul>
+                    <button class="btn-feature" onclick="showFeatureDemo('recording')">Learn More</button>
+                </div>
+
+                <div class="feature-card" data-category="security">
+                    <div class="feature-icon">🚨</div>
+                    <h3>Panic Alarm</h3>
+                    <p>Loud siren to scare attackers and attract attention</p>
+                    <ul class="feature-list">
+                        <li>120dB loud alarm</li>
+                        <li>Flashlight strobe effect</li>
+                        <li>Vibration alert</li>
+                        <li>Can't be silenced by attacker</li>
+                    </ul>
+                    <button class="btn-feature" onclick="showFeatureDemo('alarm')">Test Alarm</button>
+                </div>
+
+                <!-- Community Features -->
+                <div class="feature-card" data-category="community">
+                    <div class="feature-icon">👥</div>
+                    <h3>Circle of Safety</h3>
+                    <p>Trusted network of 5-10 contacts with real-time updates</p>
+                    <ul class="feature-list">
+                        <li>Add up to 10 trusted contacts</li>
+                        <li>Real-time location sharing</li>
+                        <li>Instant SOS notifications</li>
+                        <li>Two-way communication</li>
+                    </ul>
+                    <button class="btn-feature" onclick="showFeatureDemo('circle')">Add Contacts</button>
+                </div>
+
+                <div class="feature-card" data-category="community">
+                    <div class="feature-icon">📢</div>
+                    <h3>Report Unsafe Activity</h3>
+                    <p>Mark unsafe areas and notify community instantly</p>
+                    <ul class="feature-list">
+                        <li>Pin unsafe locations on map</li>
+                        <li>Add incident description</li>
+                        <li>Photo/video evidence upload</li>
+                        <li>Community verification system</li>
+                    </ul>
+                    <button class="btn-feature" onclick="showSection('community')">Report Now</button>
+                </div>
+
+                <div class="feature-card" data-category="community">
+                    <div class="feature-icon">📝</div>
+                    <h3>Community Platform</h3>
+                    <p>Share safety tips, articles, and experiences</p>
+                    <ul class="feature-list">
+                        <li>Viewer, Writer, Author roles</li>
+                        <li>Publish safety articles</li>
+                        <li>Pin unsafe locations</li>
+                        <li>Verified content system</li>
+                    </ul>
+                    <button class="btn-feature" onclick="showSection('community')">Join Community</button>
+                </div>
+            </div>
+
+            <!-- Extra Innovative Features -->
+            <div class="extra-features">
+                <h3>🌟 Innovative Features</h3>
+                <div class="extra-grid">
+                    <div class="extra-card">
+                        <span class="extra-icon">🚗</span>
+                        <h4>Auto/Taxi Verification</h4>
+                        <p>Scan QR or enter vehicle number to verify and track in real-time</p>
+                    </div>
+                    <div class="extra-card">
+                        <span class="extra-icon">⚠️</span>
+                        <h4>Hyperlocal Crime Alerts</h4>
+                        <p>"Chain snatching reported 600m away" - real-time location alerts</p>
+                    </div>
+                    <div class="extra-card">
+                        <span class="extra-icon">🌙</span>
+                        <h4>Safe Night Mode</h4>
+                        <p>Auto-tracking and frequent checkpoints when walking alone at night</p>
+                    </div>
+                    <div class="extra-card">
+                        <span class="extra-icon">🔋</span>
+                        <h4>Battery-Saver Emergency</h4>
+                        <p>Below 10% battery: sends final location and enables lightweight SOS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Safety Map Section -->
+    <section id="map" class="section">
+        <div class="section-content full-width">
+            <h2 class="section-title">Interactive Safety Map</h2>
+            <p class="section-subtitle">Real-time safety zones, help centers, and safe route navigation</p>
+
+            <div class="map-interface">
+                <!-- Map Controls -->
+                <div class="map-controls">
+                    <div class="control-group">
+                        <h4>🎯 Find Safe Route</h4>
+                        <input type="text" id="route-from" placeholder="Current location" value="Your Location">
+                        <input type="text" id="route-to" placeholder="Destination">
+                        <button class="btn-primary" onclick="findSafeRoute()">🛡️ Find Safest Route</button>
+                    </div>
+
+                    <div class="control-group">
+                        <h4>🏥 Nearby Help Centers</h4>
+                        <div class="help-list">
+                            <div class="help-item" onclick="showOnMap('police1')">
+                                <span class="help-icon">🚓</span>
+                                <div class="help-info">
+                                    <strong>City Police Station</strong>
+                                    <span>0.5 km • Open 24/7</span>
+                                </div>
+                                <button class="btn-small">Navigate</button>
+                            </div>
+                            <div class="help-item" onclick="showOnMap('hospital1')">
+                                <span class="help-icon">🏥</span>
+                                <div class="help-info">
+                                    <strong>General Hospital</strong>
+                                    <span>1.2 km • Emergency services</span>
+                                </div>
+                                <button class="btn-small">Navigate</button>
+                            </div>
+                            <div class="help-item" onclick="showOnMap('ngo1')">
+                                <span class="help-icon">🆘</span>
+                                <div class="help-info">
+                                    <strong>Women's Safety NGO</strong>
+                                    <span>2.1 km • 24/7 helpline</span>
+                                </div>
+                                <button class="btn-small">Navigate</button>
+                            </div>
+                            <div class="help-item" onclick="showOnMap('safe1')">
+                                <span class="help-icon">🏪</span>
+                                <div class="help-info">
+                                    <strong>Safe Haven Store</strong>
+                                    <span>0.8 km • Verified safe place</span>
+                                </div>
+                                <button class="btn-small">Navigate</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h4>🎨 Safety Zones</h4>
+                        <div class="zone-legend">
+                            <div class="legend-item">
+                                <span class="zone-color green"></span>
+                                <span>Safe Zone (85%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="zone-color yellow"></span>
+                                <span>Caution Zone (12%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="zone-color orange"></span>
+                                <span>Alert Zone (2%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="zone-color red"></span>
+                                <span>Danger Zone (1%)</span>
+                            </div>
+                        </div>
+                        <div class="current-zone">
+                            <strong>📍 Your Current Location:</strong>
+                            <div class="zone-status safe">🟢 Safe Zone ✓</div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h4>⚙️ Map Settings</h4>
+                        <label class="checkbox-label">
+                            <input type="checkbox" checked onchange="toggleMapLayer('police')">
+                            <span>Show Police Stations</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" checked onchange="toggleMapLayer('hospitals')">
+                            <span>Show Hospitals</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" checked onchange="toggleMapLayer('cctv')">
+                            <span>Show CCTV Coverage</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" checked onchange="toggleMapLayer('lighting')">
+                            <span>Show Street Lighting</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" onchange="toggleMapLayer('incidents')">
+                            <span>Show Recent Incidents</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Interactive Map Display -->
+                <div class="map-display">
+                    <div class="map-canvas">
+                        <!-- Simulated Interactive Map -->
+                        <div class="map-overlay-info">
+                            <div class="info-badge">
+                                <span class="badge-icon">📍</span>
+                                <span>Live Tracking Active</span>
+                            </div>
+                            <div class="info-badge">
+                                <span class="badge-icon">🛡️</span>
+                                <span>Safe Route Enabled</span>
+                            </div>
+                        </div>
+
+                        <!-- Map Content -->
+                        <div class="map-content">
+                            <div class="map-illustration">
+                                <div class="map-grid">
+                                    <!-- Safe Zone (Green) -->
+                                    <div class="map-zone safe-zone">
+                                        <div class="zone-marker police">🚓</div>
+                                        <div class="zone-marker cctv">📹</div>
+                                        <div class="zone-label">Downtown - Safe Zone</div>
+                                    </div>
+
+                                    <!-- Current Location -->
+                                    <div class="map-marker current-location">
+                                        <div class="marker-pulse"></div>
+                                        <div class="marker-icon">📍</div>
+                                        <div class="marker-label">You are here</div>
+                                    </div>
+
+                                    <!-- Help Centers -->
+                                    <div class="map-marker help-center" style="top: 20%; left: 30%;">
+                                        <div class="marker-icon">🚓</div>
+                                        <div class="marker-label">Police Station</div>
+                                    </div>
+
+                                    <div class="map-marker help-center" style="top: 60%; left: 70%;">
+                                        <div class="marker-icon">🏥</div>
+                                        <div class="marker-label">Hospital</div>
+                                    </div>
+
+                                    <!-- Caution Zone (Yellow) -->
+                                    <div class="map-zone caution-zone" style="top: 70%; left: 20%;">
+                                        <div class="zone-label">Industrial Area - Caution</div>
+                                    </div>
+
+                                    <!-- Safe Route Path -->
+                                    <svg class="route-path" viewBox="0 0 800 600">
+                                        <path d="M 400 300 Q 350 200, 300 150" stroke="#00BCD4" stroke-width="4"
+                                            fill="none" stroke-dasharray="10,5" />
+                                        <circle cx="400" cy="300" r="8" fill="#00BCD4" />
+                                        <circle cx="300" cy="150" r="8" fill="#34C759" />
+                                    </svg>
+                                </div>
+
+                                <!-- Map Features Info -->
+                                <div class="map-features-info">
+                                    <div class="feature-badge">
+                                        <span class="badge-icon">💡</span>
+                                        <span>Well-lit streets</span>
+                                    </div>
+                                    <div class="feature-badge">
+                                        <span class="badge-icon">👥</span>
+                                        <span>Crowded areas</span>
+                                    </div>
+                                    <div class="feature-badge">
+                                        <span class="badge-icon">📹</span>
+                                        <span>CCTV coverage</span>
+                                    </div>
+                                    <div class="feature-badge">
+                                        <span class="badge-icon">🚓</span>
+                                        <span>Police patrol route</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Map Stats -->
+                            <div class="map-stats">
+                                <div class="stat-box">
+                                    <div class="stat-value">2.3 km</div>
+                                    <div class="stat-label">Safest Route</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-value">15 min</div>
+                                    <div class="stat-label">Est. Time</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-value">95%</div>
+                                    <div class="stat-label">Safety Score</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-value">3</div>
+                                    <div class="stat-label">Help Centers</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map Actions -->
+                    <div class="map-actions">
+                        <button class="map-action-btn" onclick="startCompanionMode()">
+                            <span class="action-icon">🛡️</span>
+                            <span>Start Companion Mode</span>
+                        </button>
+                        <button class="map-action-btn" onclick="shareCurrentLocation()">
+                            <span class="action-icon">📍</span>
+                            <span>Share Live Location</span>
+                        </button>
+                        <button class="map-action-btn" onclick="reportIncident()">
+                            <span class="action-icon">⚠️</span>
+                            <span>Report Unsafe Area</span>
+                        </button>
+                        <button class="map-action-btn" onclick="findNearestPolice()">
+                            <span class="action-icon">🚓</span>
+                            <span>Nearest Police Station</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="section">
+        <div class="section-content">
+            <h2 class="section-title">Community Platform</h2>
+            <p class="section-subtitle">Share experiences, safety tips, and stay informed</p>
+
+            <!-- Community Actions -->
+            <div class="community-actions">
+                <button class="btn-primary" onclick="createPost()">✍️ Create Post</button>
+                <button class="btn-secondary" onclick="reportIncident()">⚠️ Report Incident</button>
+                <button class="btn-secondary" onclick="shareExperience()">💬 Share Experience</button>
+            </div>
+
+            <!-- Community Feed -->
+            <div class="community-feed">
+                <!-- Post 1 -->
+                <div class="post-card-large">
+                    <div class="post-header">
+                        <div class="post-avatar">SA</div>
+                        <div class="post-author">
+                            <h4>Safety Admin <span class="verified-badge">✓</span></h4>
+                            <span class="post-time">2 hours ago • Mumbai</span>
+                        </div>
+                        <div class="post-category safety-alert">Safety Alert</div>
+                    </div>
+                    <div class="post-content">
+                        <strong>🛡️ New Safety Infrastructure:</strong> Well-lit walking path opened near Central Park
+                        with CCTV coverage every 50 meters and emergency call boxes every 100 meters. Perfect for
+                        evening walks. The route is now marked as a Green Zone on the map.
+                    </div>
+                    <div class="post-location">
+                        📍 Central Park, Andheri West
+                    </div>
+                    <div class="post-actions">
+                        <button class="post-action">👍 125 Helpful</button>
+                        <button class="post-action">💬 23 Comments</button>
+                        <button class="post-action">📤 Share</button>
+                        <button class="post-action">🗺️ View on Map</button>
+                    </div>
+                </div>
+
+                <!-- Post 2 -->
+                <div class="post-card-large">
+                    <div class="post-header">
+                        <div class="post-avatar">PR</div>
+                        <div class="post-author">
+                            <h4>Priya Reddy</h4>
+                            <span class="post-time">5 hours ago • Bangalore</span>
+                        </div>
+                        <div class="post-category safety-tip">Safety Tip</div>
+                    </div>
+                    <div class="post-content">
+                        <strong>💡 Essential Safety Tip:</strong> Always share your live location with trusted contacts
+                        when traveling alone at night. Pink Shield's Circle of Safety feature makes this automatic.
+                        Also, enable Companion Mode for AI-monitored journey tracking. Stay safe, stay connected!
+                    </div>
+                    <div class="post-actions">
+                        <button class="post-action">👍 89 Helpful</button>
+                        <button class="post-action">💬 15 Comments</button>
+                        <button class="post-action">📤 Share</button>
+                    </div>
+                </div>
+
+                <!-- Post 3 - Incident Report -->
+                <div class="post-card-large incident-report">
+                    <div class="post-header">
+                        <div class="post-avatar">⚠️</div>
+                        <div class="post-author">
+                            <h4>Anonymous User</h4>
+                            <span class="post-time">8 hours ago • Delhi</span>
+                        </div>
+                        <div class="post-category incident">Incident Report</div>
+                    </div>
+                    <div class="post-content">
+                        <strong>⚠️ Harassment Incident:</strong> Reported verbal harassment near Connaught Place metro
+                        station around 9 PM. Area has poor lighting. Authorities have been notified. This zone is now
+                        marked as Yellow (Caution) on the map.
+                    </div>
+                    <div class="post-location">
+                        📍 Connaught Place Metro, Delhi
+                    </div>
+                    <div class="post-verification">
+                        <span class="verification-status">✓ Verified by 12 users</span>
+                        <span class="police-status">🚓 Police notified</span>
+                    </div>
+                    <div class="post-actions">
+                        <button class="post-action">⚠️ 45 Confirmed</button>
+                        <button class="post-action">💬 18 Comments</button>
+                        <button class="post-action">🗺️ View on Map</button>
+                    </div>
+                </div>
+
+                <!-- Post 4 - Success Story -->
+                <div class="post-card-large success-story">
+                    <div class="post-header">
+                        <div class="post-avatar">AK</div>
+                        <div class="post-author">
+                            <h4>Ananya Kumar</h4>
+                            <span class="post-time">1 day ago • Chennai</span>
+                        </div>
+                        <div class="post-category success">Success Story</div>
+                    </div>
+                    <div class="post-content">
+                        <strong>🌟 Pink Shield Saved Me:</strong> I was followed by someone suspicious late at night.
+                        Used the shake-to-SOS feature, and within 3 minutes, my emergency contacts were alerted, police
+                        were dispatched, and the AI started recording. The person fled when the panic alarm went off.
+                        Thank you Pink Shield team! This app literally saves lives.
+                    </div>
+                    <div class="post-actions">
+                        <button class="post-action">❤️ 412 Hearts</button>
+                        <button class="post-action">💬 67 Comments</button>
+                        <button class="post-action">📤 Share Story</button>
+                    </div>
+                </div>
+
+                <!-- Post 5 - Community Event -->
+                <div class="post-card-large">
+                    <div class="post-header">
+                        <div class="post-avatar">SD</div>
+                        <div class="post-author">
+                            <h4>Self Defense Coach <span class="verified-badge">✓</span></h4>
+                            <span class="post-time">2 days ago • Pune</span>
+                        </div>
+                        <div class="post-category event">Community Event</div>
+                    </div>
+                    <div class="post-content">
+                        <strong>🥋 Free Self-Defense Workshop:</strong> Join us this Saturday at Community Center for a
+                        comprehensive self-defense workshop. Learn basic safety techniques, situational awareness, and
+                        how to use Pink Shield features effectively. Open to all. Registration link in comments!
+                    </div>
+                    <div class="post-location">
+                        📍 Pune Community Center • Saturday 10 AM
+                    </div>
+                    <div class="post-actions">
+                        <button class="post-action">✓ 156 Registered</button>
+                        <button class="post-action">💬 34 Comments</button>
+                        <button class="post-action">📤 Share Event</button>
+                    </div>
+                </div>
+
+                <!-- Post 6 - Helpline Info -->
+                <div class="post-card-large">
+                    <div class="post-header">
+                        <div class="post-avatar">WH</div>
+                        <div class="post-author">
+                            <h4>Women's Helpline <span class="verified-badge">✓</span></h4>
+                            <span class="post-time">3 days ago • National</span>
+                        </div>
+                        <div class="post-category info">Important Info</div>
+                    </div>
+                    <div class="post-content">
+                        <strong>📞 Know Your Emergency Numbers:</strong><br>
+                        • Police: 100 / 112 (All emergencies)<br>
+                        • Women Helpline: 1091<br>
+                        • Ambulance: 108<br>
+                        • Domestic Abuse: 181<br>
+                        • Child Helpline: 1098<br>
+                        Save these numbers and share with your loved ones. Help is always available!
+                    </div>
+                    <div class="post-actions">
+                        <button class="post-action">📋 256 Saved</button>
+                        <button class="post-action">💬 42 Comments</button>
+                        <button class="post-action">📤 Share</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accessibility Section -->
+    <section id="accessibility" class="section">
+        <div class="section-content">
+            <h2 class="section-title">Accessibility & Inclusivity</h2>
+            <p class="section-subtitle">Designed for everyone, including people with disabilities</p>
+
+            <div class="accessibility-grid">
+                <!-- For Blind Users -->
+                <div class="accessibility-card">
+                    <div class="access-icon">👁️</div>
+                    <h3>For Blind Users</h3>
+                    <ul class="access-list">
+                        <li>Full voice navigation</li>
+                        <li>Audio descriptions for all features</li>
+                        <li>AI-assisted interactions</li>
+                        <li>Voice command SOS: "Help me"</li>
+                        <li>Screen reader optimized</li>
+                        <li>Haptic feedback for confirmations</li>
+                    </ul>
+                    <button class="btn-access" onclick="enableVoiceMode()">Enable Voice Mode</button>
+                </div>
+
+                <!-- For Deaf Users -->
+                <div class="accessibility-card">
+                    <div class="access-icon">👂</div>
+                    <h3>For Deaf Users</h3>
+                    <ul class="access-list">
+                        <li>Vibration alerts (distinct patterns)</li>
+                        <li>Flashlight signal alerts</li>
+                        <li>On-screen captions for all audio</li>
+                        <li>Visual SOS indicators</li>
+                        <li>Text-based emergency communication</li>
+                        <li>Video call support with sign language</li>
+                    </ul>
+                    <button class="btn-access" onclick="enableVisualMode()">Enable Visual Mode</button>
+                </div>
+
+                <!-- For Mute Users -->
+                <div class="accessibility-card">
+                    <div class="access-icon">🤐</div>
+                    <h3>For Mute Users</h3>
+                    <ul class="access-list">
+                        <li>Tap-pattern SOS (tap-tap-pause-tap)</li>
+                        <li>Gesture-based triggers</li>
+                        <li>Pre-recorded emergency messages</li>
+                        <li>Text-to-speech for alerts</li>
+                        <li>Silent SOS activation</li>
+                        <li>Visual confirmation feedback</li>
+                    </ul>
+                    <button class="btn-access" onclick="enableSilentMode()">Enable Silent Mode</button>
+                </div>
+
+                <!-- For Physically Disabled Users -->
+                <div class="accessibility-card">
+                    <div class="access-icon">♿</div>
+                    <h3>For Physically Disabled</h3>
+                    <ul class="access-list">
+                        <li>Eye-control SOS triggers</li>
+                        <li>Auto-SOS if device drops</li>
+                        <li>Tilt-based SOS activation</li>
+                        <li>Voice-only operation</li>
+                        <li>Large touch targets</li>
+                        <li>Switch control support</li>
+                    </ul>
+                    <button class="btn-access" onclick="enableAssistiveMode()">Enable Assistive Mode</button>
+                </div>
+
+                <!-- For Elderly Users -->
+                <div class="accessibility-card">
+                    <div class="access-icon">👵</div>
+                    <h3>For Elderly Users</h3>
+                    <ul class="access-list">
+                        <li>Simplified UI with large buttons</li>
+                        <li>Auto check-in reminders</li>
+                        <li>Calm mode (reduced animations)</li>
+                        <li>One-button emergency call</li>
+                        <li>High contrast mode</li>
+                        <li>Medication reminders</li>
+                    </ul>
+                    <button class="btn-access" onclick="enableElderlyMode()">Enable Elderly Mode</button>
+                </div>
+
+                <!-- For Neurodivergent Users -->
+                <div class="accessibility-card">
+                    <div class="access-icon">🧠</div>
+                    <h3>For Neurodivergent Users</h3>
+                    <ul class="access-list">
+                        <li>Calm mode (minimal stimulation)</li>
+                        <li>Predictable interface patterns</li>
+                        <li>Clear, simple language</li>
+                        <li>Reduced motion option</li>
+                        <li>Focus mode (distraction-free)</li>
+                        <li>Routine-based safety checks</li>
+                    </ul>
+                    <button class="btn-access" onclick="enableCalmMode()">Enable Calm Mode</button>
+                </div>
+            </div>
+
+            <!-- Special Accessibility Features -->
+            <div class="special-features">
+                <h3>🌟 Special Accessibility Features</h3>
+                <div class="special-grid">
+                    <div class="special-card">
+                        <span class="special-icon">📳</span>
+                        <h4>Vibration Patterns</h4>
+                        <p>Distinct vibration patterns for different alert levels: Emergency (rapid), Warning (pulsing),
+                            Info (gentle)</p>
+                    </div>
+                    <div class="special-card">
+                        <span class="special-icon">👆</span>
+                        <h4>Tap-Pattern SOS</h4>
+                        <p>Silent emergency activation: Tap-Tap-Pause-Tap pattern triggers SOS without sound or visual
+                            cues</p>
+                    </div>
+                    <div class="special-card">
+                        <span class="special-icon">🗣️</span>
+                        <h4>AI Voice Navigation</h4>
+                        <p>"Guide me home" triggers safe route with turn-by-turn voice directions and hazard warnings
+                        </p>
+                    </div>
+                    <div class="special-card">
+                        <span class="special-icon">🎨</span>
+                        <h4>Customizable Interface</h4>
+                        <p>Adjust colors, font sizes, button sizes, and contrast to match your needs and preferences</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WCAG Compliance -->
+            <div class="compliance-badge">
+                <h4>✓ WCAG 2.1 AA Compliant</h4>
+                <p>Pink Shield meets international accessibility standards for web and mobile applications</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact/Get Started Section -->
+    <section id="contact" class="section">
+        <div class="section-content">
+            <h2 class="section-title">Get Started with Pink Shield</h2>
+            <p class="section-subtitle">Join 100,000+ users staying safe every day</p>
+
+            <div class="signup-container">
+                <div class="signup-form">
+                    <h3>Create Your Free Account</h3>
+                    <form id="main-signup-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="signup-name">Full Name *</label>
+                                <input type="text" id="signup-name" required placeholder="Enter your full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="signup-phone">Phone Number *</label>
+                                <div class="input-with-button">
+                                    <input type="tel" id="signup-phone" required placeholder="+91 XXXXX XXXXX">
+                                    <button type="button" class="btn-inline" onclick="sendOTP()">Send OTP</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="signup-email">Email Address *</label>
+                                <input type="email" id="signup-email" required placeholder="your.email@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="signup-city">City *</label>
+                                <input type="text" id="signup-city" required placeholder="Your city">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="signup-gender">Gender</label>
+                                <select id="signup-gender">
+                                    <option value="">Select Gender</option>
+                                    <option value="female">Female</option>
+                                    <option value="male">Male</option>
+                                    <option value="other">Other</option>
+                                    <option value="prefer-not-to-say">Prefer not to say</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="signup-password">Password *</label>
+                                <input type="password" id="signup-password" required
+                                    placeholder="Create a strong password">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Community Role</label>
+                            <div class="role-selector">
+                                <label class="role-option">
+                                    <input type="radio" name="role" value="viewer" checked>
+                                    <span class="role-card">
+                                        <strong>Viewer</strong>
+                                        <small>View safety alerts and community posts</small>
+                                    </span>
+                                </label>
+                                <label class="role-option">
+                                    <input type="radio" name="role" value="writer">
+                                    <span class="role-card">
+                                        <strong>Writer</strong>
+                                        <small>Share safety tips and experiences</small>
+                                    </span>
+                                </label>
+                                <label class="role-option">
+                                    <input type="radio" name="role" value="author">
+                                    <span class="role-card">
+                                        <strong>Author</strong>
+                                        <small>Create verified safety content</small>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Accessibility Features (Optional)</label>
+                            <div class="accessibility-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="voice-nav">
+                                    <span>Voice Navigation</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="vibration">
+                                    <span>Vibration Alerts</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="tap-sos">
+                                    <span>Tap-Pattern SOS</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="large-icons">
+                                    <span>Large Icons Mode</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-large btn-full">Create Free Account</button>
+                        <p class="form-note">Already have an account? <a href="#" onclick="showLogin()">Login here</a>
+                        </p>
+                    </form>
+                </div>
+
+                <div class="signup-benefits">
+                    <h3>Why Choose Pink Shield?</h3>
+                    <div class="benefit-list">
+                        <div class="benefit-item">
+                            <span class="benefit-icon">⚡</span>
+                            <div>
+                                <strong>Sub-100ms Response</strong>
+                                <p>Fastest emergency response in the industry</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">🤖</span>
+                            <div>
+                                <strong>AI-Powered Safety</strong>
+                                <p>Advanced threat detection and prevention</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">🗺️</span>
+                            <div>
+                                <strong>Smart Navigation</strong>
+                                <p>Safe routes with real-time danger zone avoidance</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">👥</span>
+                            <div>
+                                <strong>Community Network</strong>
+                                <p>100,000+ users keeping each other safe</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">♿</span>
+                            <div>
+                                <strong>Fully Accessible</strong>
+                                <p>Designed for everyone, including people with disabilities</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">🔐</span>
+                            <div>
+                                <strong>Privacy First</strong>
+                                <p>End-to-end encryption and GDPR compliant</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-box">
+                        <h4>Need Help?</h4>
+                        <div class="contact-item">
+                            <span>📧</span> support@pinkshield.com
+                        </div>
+                        <div class="contact-item">
+                            <span>📞</span> 1800-PINK-SHIELD (24/7)
+                        </div>
+                        <div class="contact-item">
+                            <span>📍</span> Mumbai, India
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="logo.png" alt="Pink Shield Logo" class="footer-logo">
+                <h3>Pink Shield</h3>
+                <p>Safety. Community. Accessibility.</p>
+                <p class="footer-tagline">AI-Powered Women's Safety Platform</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home" onclick="showSection('home')">Home</a></li>
+                    <li><a href="#features" onclick="showSection('features')">Features</a></li>
+                    <li><a href="#map" onclick="showSection('map')">Safety Map</a></li>
+                    <li><a href="#community" onclick="showSection('community')">Community</a></li>
+                    <li><a href="#accessibility" onclick="showSection('accessibility')">Accessibility</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Safety Tips</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">API Documentation</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Emergency Numbers</h4>
+                <ul class="footer-links emergency-numbers">
+                    <li>🚓 Police: 100 / 112</li>
+                    <li>👩 Women Helpline: 1091</li>
+                    <li>🚑 Ambulance: 108</li>
+                    <li>🏠 Domestic Abuse: 181</li>
+                    <li>👶 Child Helpline: 1098</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Pink Shield. All rights reserved. | Designed with 💖 for women's safety</p>
+            <p class="footer-compliance">WCAG 2.1 AA Compliant • GDPR Compliant • ISO 27001 Certified</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
